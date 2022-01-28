@@ -1,5 +1,7 @@
-### Starter Project for the Material UI playlist
+### This repository contain practice code for material UI component library for React
 
-Download the code & run **npm install** to install dependencies before starting the app.
+To run this code, you need to clone this repoistory into your system and run "npm install" in the terminal to install all the dependencies to run this project
 
-You'll also need to install Material UI as a dependency. To do this run **npm install @material-ui/core**
+All the dependecies can be found in package.json file.
+
+
