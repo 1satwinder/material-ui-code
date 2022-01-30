@@ -94,7 +94,6 @@ export default function Create() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-        
             <FormControlLabel value="money" control={<Radio />} label="money" />
             <FormControlLabel value="todos" control={<Radio />} label="todos" />
             <FormControlLabel value="work" control={<Radio />} label="work" />

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import NoteCard from "../components/NoteCard";
+import { Container } from "@mui/material";
+import Masonry from "react-masonry-css";
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
@@ -10,13 +14,33 @@ export default function Notes() {
       .then((data) => setNotes(data));
   }, []);
 
+  const handleDelete = async (id) => {
+    await fetch("http://localhost:8080/notes/" + id, {
+      method: "DELETE",
+    });
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
+
+  const breakpoints ={
+    default:3,
+    1100: 2,
+    700: 1
+  }
+
   return (
-    <div>
-      <Typography variant="h6" align="center">
+    <Container>
+      <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {notes.map((note) => (
-          <h1>{note.title}</h1>
+          <div key={note.id}>
+            <NoteCard note={note} handleDelete={handleDelete}  />
+          </div>
         ))}
-      </Typography>
-    </div>
+      </Masonry>
+    </Container>
   );
 }
